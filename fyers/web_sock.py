@@ -1,0 +1,14 @@
+from fyers_api.websocket import ws
+# from pprintpp import pprint
+client_id='G7KFX6G35L-100'
+token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuZnllcnMuaW4iLCJpYXQiOjE2NDk0MjIzNDUsImV4cCI6MTY0OTQ2NDIyNSwibmJmIjoxNjQ5NDIyMzQ1LCJhdWQiOlsieDowIiwieDoxIiwiZDoxIiwiZDoyIiwieDowIl0sInN1YiI6ImFjY2Vzc190b2tlbiIsImF0X2hhc2giOiJnQUFBQUFCaVVEQUp1bHBLNXFBczJDeHFOZ2RtWjNVYjltSG1fRTJxYmZ5Tks3d25vRUVoVW1lZlZRMmd0TUt4MWRmcEFyczhyR1RlWHNJcHU0OUZuTkhlbVZkYXJiWmhsMlhTV3hYMVg2d0RhYWFsUnhsRDl1OD0iLCJkaXNwbGF5X25hbWUiOiJQUkFTSEFOVCIsImZ5X2lkIjoiWFAwMjM4NyIsImFwcFR5cGUiOjEwMCwicG9hX2ZsYWciOiJOIn0.5vIZGFPGcQoY89JS9z8S5tsTzPAh7-CZAxrdPxZk6BU'
+access_token=client_id+':'+token
+data_type='symbolData'
+symbol=['MCX:CRUDEOIL22APRFUT']
+
+def custom_message(ticks):
+    print('symbol: ',ticks.response[0]['symbol'],'last_price:',ticks.response[0])
+
+ws.FyersSocket.websocket_data=custom_message
+fs=ws.FyersSocket(access_token,data_type,symbol)
+fs.subscribe()

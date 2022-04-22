@@ -1,0 +1,1 @@
+config.BARS_URL
